@@ -1,0 +1,65 @@
+{
+    "namespace": "com.demo.cloudevents.avro",
+    "type": "record",
+    "name": "User",
+    "fields": [
+        {
+            "name": "customer",
+            "type": {
+                "namespace": "com.demo.cloudevents.avro",
+                "type": "record",
+                "name": "Customer",
+                "fields": [
+                    {"name": "customerId", "type": "string", "default": ""},
+                    {"name": "ccId", "type": "string"}
+                ]
+            }
+        },
+        {
+            "name": "account",
+            "type": {
+                "namespace": "com.demo.cloudevents.avro",
+                "type": "record",
+                "name": "Account",
+                "fields": [
+                    {"name": "accountNumber", "type": "string"},
+                    {"name": "payment",
+                     "type": {
+                         "namespace": "com.demo.cloudevents.avro",
+                         "type": "record",
+                         "name": "Payment",
+                         "fields": [
+                             {"name": "paymentId", "type": "string"},
+                             {"name": "paymentAmount", "type": "double"}
+                         ]
+                    }
+                }
+                ]
+            }
+        },
+        {
+            "name": "paymentSchedule",
+            "type": {
+                "namespace": "com.demo.cloudevents.avro",
+                "type": "record",
+                "name": "PaymentSchedule",
+                "fields": [
+                    {"name": "paymentScheduleType", "type": "string"},
+                    {"name": "paymentFrequency", "type": "string"},
+                    {
+                        "name": "autoPay",
+                        "type": {
+                            "namespace": "com.demo.cloudevents.avro",
+                            "type": "record",
+                            "name": "Autopay",
+                            "fields": [
+                                {"name": "autoPayStartDate", "type": "string"},
+                                {"name": "autoPayDate", "type": "string"}
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
